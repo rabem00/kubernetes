@@ -1,11 +1,22 @@
-### Raspberry Pi and DeskPi super6C Setup
+# Ansible Playbooks for Kubernetes Clusters
+
+There are two types of playbooks in this repository:
+
+- `install.yml` - This is the main playbook that will configure a Kubernetes cluster. It will install the required packages, configure the cluster, and install the required applications.
+- `upgrade.yml` - This playbook will upgrade the cluster to the latest version of Kubernetes.
+
+The playbooks are designed to be run on a single Ansible controller, and will configure a Kubernetes cluster on a set of nodes. The nodes can be any combination of Raspberry Pi 4s, Raspberry Pi Compute Module 4s, and/or x86_64 servers.
+
+## K8S - RHEL 8 Based Cluster
+
+## K8S - Raspberry Pi and DeskPi super6C Setup
 
 Running Raspberry Pi OS (64-bit, lite) on a set of six Raspberry Pi Compute Module 4s with 8GB of RAM. All are installed in a DeskPi super6C. Each node is configured to boot from NVME. Each NVME is flashed with Raspberry Pi OS using Raspberry Pi Imager.
 
 To make network discovery and integration easier, I edited the advanced configuration in Imager (press Shift + Ctrl + X), and set the following options:
 
-  - Set hostname: `cl1m1.local` (set to cl1 for cluster1 and m1 for master1, etc. Set cl1w1 for worker1 etc.)
-  - Enable SSH: 'Allow public-key', and paste in my public SSH key(s)
+- Set hostname: `cl1m1.local` (set to cl1 for cluster1 and m1 for master1, etc. Set cl1w1 for worker1 etc.)
+- Enable SSH: 'Allow public-key', and paste in my public SSH key(s)
 
 After setting all those options, making sure the hostname is unique to each node (and matches what is in `inventory/cluster1.ini`).
 
